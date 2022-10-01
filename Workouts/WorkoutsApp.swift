@@ -6,12 +6,15 @@
 //
 
 import SwiftUI
+import UIKit
+import CoreData
 
 @main
 struct WorkoutsApp: App {
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
         }
     }
 }
