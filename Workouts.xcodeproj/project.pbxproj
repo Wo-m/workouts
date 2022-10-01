@@ -18,8 +18,9 @@
 		21A7B52D28E7A65200C5FB98 /* Sessions.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 21A7B52B28E7A65200C5FB98 /* Sessions.xcdatamodeld */; };
 		21A7B53128E7AB4B00C5FB98 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A7B53028E7AB4B00C5FB98 /* DataController.swift */; };
 		21A7B53928E827E000C5FB98 /* WorkoutsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A7B53828E827E000C5FB98 /* WorkoutsTests.swift */; };
-		21A7B54328E83C3100C5FB98 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A7B54228E83C3100C5FB98 /* File.swift */; };
 		21A7B54628E83E0800C5FB98 /* NewExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A7B54528E83E0800C5FB98 /* NewExerciseView.swift */; };
+		21A7B54828E8D44700C5FB98 /* oldCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A7B54728E8D44700C5FB98 /* oldCode.swift */; };
+		21A7B54A28E8D6C900C5FB98 /* CreateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A7B54928E8D6C900C5FB98 /* CreateViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,8 +47,9 @@
 		21A7B53028E7AB4B00C5FB98 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		21A7B53628E827E000C5FB98 /* WorkoutsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WorkoutsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		21A7B53828E827E000C5FB98 /* WorkoutsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsTests.swift; sourceTree = "<group>"; };
-		21A7B54228E83C3100C5FB98 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		21A7B54528E83E0800C5FB98 /* NewExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExerciseView.swift; sourceTree = "<group>"; };
+		21A7B54728E8D44700C5FB98 /* oldCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = oldCode.swift; sourceTree = "<group>"; };
+		21A7B54928E8D6C900C5FB98 /* CreateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,13 +91,14 @@
 		21A7B50B28E6F1E800C5FB98 /* Workouts */ = {
 			isa = PBXGroup;
 			children = (
-				21A7B53F28E83C0C00C5FB98 /* CustomViewController */,
+				21A7B54C28E8D94A00C5FB98 /* ViewModel */,
 				21A7B52F28E7AB0000C5FB98 /* utils */,
 				21A7B52E28E7AA4300C5FB98 /* Views */,
 				21A7B52828E7A53200C5FB98 /* CoreData */,
 				21A7B50C28E6F1E800C5FB98 /* WorkoutsApp.swift */,
 				21A7B51028E6F1EA00C5FB98 /* Assets.xcassets */,
 				21A7B51228E6F1EA00C5FB98 /* Preview Content */,
+				21A7B54728E8D44700C5FB98 /* oldCode.swift */,
 			);
 			path = Workouts;
 			sourceTree = "<group>";
@@ -120,7 +123,8 @@
 		21A7B52E28E7AA4300C5FB98 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				21A7B54428E83DF500C5FB98 /* Create */,
+				21A7B51C28E78ECC00C5FB98 /* CreateView.swift */,
+				21A7B54528E83E0800C5FB98 /* NewExerciseView.swift */,
 				21A7B52028E78F1500C5FB98 /* StartView.swift */,
 				21A7B51E28E78F0900C5FB98 /* ProgramView.swift */,
 				21A7B50E28E6F1E800C5FB98 /* MainView.swift */,
@@ -144,21 +148,12 @@
 			path = WorkoutsTests;
 			sourceTree = "<group>";
 		};
-		21A7B53F28E83C0C00C5FB98 /* CustomViewController */ = {
+		21A7B54C28E8D94A00C5FB98 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				21A7B54228E83C3100C5FB98 /* File.swift */,
+				21A7B54928E8D6C900C5FB98 /* CreateViewModel.swift */,
 			);
-			path = CustomViewController;
-			sourceTree = "<group>";
-		};
-		21A7B54428E83DF500C5FB98 /* Create */ = {
-			isa = PBXGroup;
-			children = (
-				21A7B51C28E78ECC00C5FB98 /* CreateView.swift */,
-				21A7B54528E83E0800C5FB98 /* NewExerciseView.swift */,
-			);
-			path = Create;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,12 +259,13 @@
 				21A7B50F28E6F1E800C5FB98 /* MainView.swift in Sources */,
 				21A7B52328E79AD700C5FB98 /* isHidden.swift in Sources */,
 				21A7B52128E78F1500C5FB98 /* StartView.swift in Sources */,
+				21A7B54A28E8D6C900C5FB98 /* CreateViewModel.swift in Sources */,
 				21A7B51D28E78ECC00C5FB98 /* CreateView.swift in Sources */,
 				21A7B54628E83E0800C5FB98 /* NewExerciseView.swift in Sources */,
 				21A7B53128E7AB4B00C5FB98 /* DataController.swift in Sources */,
 				21A7B50D28E6F1E800C5FB98 /* WorkoutsApp.swift in Sources */,
 				21A7B52D28E7A65200C5FB98 /* Sessions.xcdatamodeld in Sources */,
-				21A7B54328E83C3100C5FB98 /* File.swift in Sources */,
+				21A7B54828E8D44700C5FB98 /* oldCode.swift in Sources */,
 				21A7B51F28E78F0900C5FB98 /* ProgramView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
