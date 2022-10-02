@@ -8,25 +8,41 @@
 import Foundation
 import SwiftUI
 
+/// Now VM class for this, its very smiple and uses logic from its parents view model: CreateVM
 struct NewExerciseView: View {
     @StateObject var viewModel: CreateViewVM
     
+    @State var name: String = ""
+    @State var reps: String = ""
+    @State var sets: String = ""
+    @State var weight: String = ""
+    @State var timer: String = ""
+    
     var body: some View {
         VStack{
-            TextField("Exercise Name", text: $viewModel.exerciseName)
+            TextField("Exercise Name", text: $name)
                 .multilineTextAlignment(.center)
                 .font(Font(UIFont.systemFont(ofSize: 30)))
                 .padding(.vertical, 30.0)
             
             Spacer()
             
-            labelInput(label: "Sets", content: $viewModel.sets)
-            labelInput(label: "Reps", content: $viewModel.reps)
-            labelInput(label: "Weight", content: $viewModel.weight)
-            labelInput(label: "Timer", content: $viewModel.timer)
+            labelInput(label: "Sets", content: $sets)
+            labelInput(label: "Reps", content: $reps)
+            labelInput(label: "Weight", content: $weight)
+            labelInput(label: "Timer", content: $timer)
             
-            Button("Save") {
-                viewModel.saveExercise()
+            HStack {
+                Spacer()
+                Button("Save") {
+                    viewModel.saveExercise(name, timer, weight, reps, sets)
+                    viewModel.updateExerciseDisplayInfo()
+                }
+                Spacer()
+                Button("Cancel") {
+                    viewModel.setIsAddingExercise(bool: false)
+                }
+                Spacer()
             }
         
         }.background(Color.white)

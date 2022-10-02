@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct StartView: View {
+    @StateObject var viewModel = StartVM()
     @State var sessions: [Session] = []
     var dataController = DataController()
     
