@@ -21,9 +21,9 @@ struct CreateView: View {
                 .padding(.vertical, 15.0)
 
 
-            
-            ExerciseTable(displayInfo: viewModel.displayInfo, viewModel: viewModel)
-
+            ScrollView {
+                ExerciseTable(displayInfo: viewModel.displayInfo, viewModel: viewModel)
+            }
             
             Button("Add Exercise") {
                 viewModel.setIsAddingExercise(bool: true)
@@ -96,9 +96,11 @@ struct ExerciseTableRow: View {
             Text(row.weight).frame(maxWidth: .infinity, alignment: .center)
             
             Button {
-                // Expand
-                self.up.toggle()
-                self.expanded.toggle()
+                // Applies animation to anything affected by change
+                withAnimation(.easeInOut(duration: 0.5)) {
+                    self.up.toggle()
+                    self.expanded.toggle()
+                }
             } label: {
                 Image(systemName: "chevron.up")
                     .rotationEffect(.degrees(self.up ? 0.0 : 180.0))
@@ -106,44 +108,83 @@ struct ExerciseTableRow: View {
             
         }.padding([.bottom,], 20)
         
+
+        ExerciseTableExpansion(viewModel: viewModel, expanded: $expanded, index: row.index)
+            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: expanded ? .none : 0)
+            .clipped()
+            
         
         // Divider
         RoundedRectangle(cornerRadius: 25)
             .fill(Color.gray)
             .frame(width: screenSize.width * 0.85, height: 1,  alignment: .center)
             .padding([.bottom,], 20)
+            
     }
 }
 
-//struct exerciseRow: View {
-//
-//    var exercise: SessionExercise
-//    var instance: ExerciseInstance
-//
-//    init(exercise: SessionExercise) {
-//
-//    }
-//
-//    var body: some View {
-//        HStack {
-//            Text(exercise.referenceExercise?.name ?? "nil")
-////            Text(String(getSets()))
-////            Text(String(getReps()))
-//        }
-//    }
-//
-////    func getSets() -> Int {
-////        return exercise.instances.
-////    }
-////
-////    func getReps() -> Int {
-////        let arr = exercise.repset?.sortedArray(using: [NSSortDescriptor(key: "rep", ascending: true)]) as? [Repset]
-////        return Int(arr?[0].rep ?? 0)
-////    }
-////
-////    func getWeight() -> Int {
-////        let arr = exercise.repset?.sortedArray(using: [NSSortDescriptor(key: "weight", ascending: true)])
-////        return arr?.last as! Int
-////    }
-////
-//}
+struct ExerciseTableExpansion: View {
+    // Params
+    @StateObject var viewModel: CreateViewVM
+    @Binding var expanded: Bool
+    
+    let index: Int16
+    
+    
+    
+    var body: some View {
+        VStack {
+            ForEach(viewModel.getRepSets(index: index)) { repset in
+                expansionRow(viewModel: viewModel, repset: repset)
+                    .isHidden(!expanded)
+            }
+        }
+    }
+}
+
+struct expansionRow: View {
+    
+    // Params
+    @StateObject var viewModel: CreateViewVM
+    let repset: Repset
+    
+    // TODO: make this less magic numbery
+    let width: CGFloat = UIScreen.main.bounds.width*0.8
+    
+    
+    // State Vars
+    @State var rep: String = ""
+    @State var weight: String = ""
+    
+    var body: some View {
+        
+        /// Bindings to allow updates on change
+        // TODO: see if you can set this change on collapse
+        let repBinding = Binding<String> (get: {
+            self.rep
+        }, set: {
+            self.rep = $0
+            viewModel.updateRepSet(repset: repset, rep: rep)
+        })
+        
+    
+        let weightBinding = Binding<String> (get: {
+            self.weight
+        }, set: {
+            self.weight = $0
+            viewModel.updateRepSet(repset: repset, weight: weight)
+        })
+        
+        HStack{
+            Text(String(repset.set + 1))
+                .frame(width: width * 0.2, alignment: .center)
+            TextField(String(repset.rep), text: repBinding)
+                .multilineTextAlignment(.center)
+                .frame(maxWidth: .infinity, alignment: .center)
+            TextField( String(repset.weight), text: weightBinding)
+                .multilineTextAlignment(.center)
+                .frame(maxWidth: .infinity, alignment: .center)
+        }
+    }
+}
+

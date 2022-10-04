@@ -33,13 +33,51 @@ class CreateViewVM: ObservableObject {
     }
     
     func saveExercise(_ name: String, _ sets: String, _ reps: String, _ weight: String, _ timer: String) {
-        let exercise = dataController.createSessionExerciseWithChildren(timer, weight, reps, sets, name, index)
+        let exercise = dataController.createSessionExerciseWithChildren(sets: sets, reps: reps,
+                                                                        weight: weight, timer: timer, name: name, index: index)
         exercises.append(exercise)
         isAddingExercise = false
         index +=  1 // Added exercise so increase index
     }
 
-    /// Takes all exercises in current CreateView, and returns data to be displayed on screen
+    
+    //
+    func getRepSets(index: Int16) -> [Repset] {
+        return getRepSets(instance: getExerciseInstanceForIndex(index: index)!)
+    }
+    
+    
+    // Returns optional, nil if no exercise for index
+    func getExerciseInstanceForIndex(index: Int16) -> ExerciseInstance? {
+        
+        for exercise in exercises {
+            if (exercise.index == index){
+                return (exercise.instances?.allObjects as! [ExerciseInstance])[0]
+            }
+        }
+        
+        return nil
+    }
+    
+    // Ordered by set num
+    func getRepSets(instance: ExerciseInstance) -> [Repset] {
+        return instance.repset?.sortedArray(using: [NSSortDescriptor(key: "set", ascending: true)]) as! [Repset]
+    }
+    
+    func updateRepSet(repset: Repset, rep: String) {
+        if rep.isInt16 { // Check string
+            repset.rep = rep.int16
+        }
+    }
+    
+    func updateRepSet(repset: Repset,  weight: String) {
+        if weight.isInt16 {
+            repset.weight = weight.int16
+        }
+    }
+    
+    
+    // Takes all exercises in current CreateView, and returns data to be displayed on screen
     func updateExerciseDisplayInfo() {
         var out: [DisplayInfo] = []
         for exercise in exercises {

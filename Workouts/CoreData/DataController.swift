@@ -49,13 +49,13 @@ class DataController: ObservableObject {
     /*
      Create a session exercise with all child entities
      */
-    func createSessionExerciseWithChildren(_ timer: String, _ weight: String,
-                               _ reps: String, _ sets: String, _ name: String, _ index: Int16)
+    func createSessionExerciseWithChildren(sets: String, reps: String,  weight: String,
+                                           timer: String, name: String, index: Int16)
     -> SessionExercise {
         
         let reference = getReferenceExercise(name)
         
-        let instance = createExerciseInstance(timer, weight, reps, sets)
+        let instance = createExerciseInstance(sets: sets, reps: reps, weight: weight, timer: timer)
         
         // Generate SessionExercise
         let exercise = SessionExercise(context: moc)
@@ -70,7 +70,9 @@ class DataController: ObservableObject {
     /*
      Create an Exercise instance, along with associate repset entities
      */
-    func createExerciseInstance(_ timer: String, _ weight: String, _ reps: String, _ sets: String)-> ExerciseInstance {
+    func createExerciseInstance(sets: String, reps: String,  weight: String, timer: String)-> ExerciseInstance {
+        
+        // TODO: validation (no more than 10 sets, no empty vals, all numbers)
         
         // Generate the Exercise instance
         let instance = ExerciseInstance(context: moc)
@@ -80,8 +82,8 @@ class DataController: ObservableObject {
         // Create repset instances
         var repsets: [Repset] = []
         var i: Int16 = 0
-        let numReps: Int = Int(reps)!
-        while(i < numReps) {
+        let numSets: Int = Int(sets)!
+        while(i < numSets) {
             let repset = Repset(context: moc)
             repset.set = i
             repset.rep = Int16(reps)!

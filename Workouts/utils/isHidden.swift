@@ -33,3 +33,28 @@ extension View {
         }
     }
 }
+
+extension String {
+    var isInt16: Bool {
+        if Int16(self) != nil {
+            return true
+        }
+        return false
+    }
+
+    var isFloat: Bool {
+        if Float(self) != nil {
+            return true
+        }
+        return false
+    }
+    
+    /// Forcefully unwrapping these, so always call above methods first
+    var int16: Int16 {
+        return Int16(self)!
+    }
+    
+    var float: Float {
+        return Float(self)!
+    }
+}

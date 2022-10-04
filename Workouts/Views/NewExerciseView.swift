@@ -35,7 +35,7 @@ struct NewExerciseView: View {
             HStack {
                 Spacer()
                 Button("Save") {
-                    viewModel.saveExercise(name, timer, weight, reps, sets)
+                    viewModel.saveExercise(name, sets, reps, weight, timer)
                     viewModel.updateExerciseDisplayInfo()
                 }
                 Spacer()
