@@ -12,28 +12,33 @@ import CoreData
 
 struct CreateView: View {
     @StateObject var viewModel = CreateViewVM()
+    @Environment(\.colorScheme) var cs
+    let screenSize: CGRect = UIScreen.main.bounds
 
     var body: some View {
         VStack{
             TextField("Session Name", text: $viewModel.sessionName)
-                .multilineTextAlignment(.center)
-                .font(Font(UIFont.systemFont(ofSize: 30)))
-                .padding(.vertical, 15.0)
+                .heading()
+                .padding(.top, 20)
+            
+            RoundedRectangle(cornerRadius: 25)
+                .divider(width: screenSize.width)
 
 
             ScrollView {
                 ExerciseTable(displayInfo: viewModel.displayInfo, viewModel: viewModel)
             }
             
-            Button("Add Exercise") {
+            Button("+") {
                 viewModel.setIsAddingExercise(bool: true)
-            }.buttonStyle(.bordered).foregroundColor(Color.black)
+            }
+            .basic(cs)
             
             Spacer()
             
-            Button("Save") {
+            Button("Save Session") {
                 viewModel.saveSession()
-            }
+            }.save()
         
         }.overlay(alignment: .center) {
             NewExerciseView(viewModel: viewModel).isHidden(!viewModel.isAddingExercise)
@@ -53,16 +58,11 @@ struct ExerciseTable: View {
 
     var body: some View {
         VStack {
-            RoundedRectangle(cornerRadius: 25)
-                .fill(Color.gray)
-                .frame(width: screenSize.width * 0.85, height: 1,  alignment: .center)
-                .padding([.bottom,], 20)
-                
             ForEach(displayInfo) { row in
                 ExerciseTableRow(row: row, viewModel: viewModel)
             }
         }
-        .frame(width: screenSize.width*0.8)
+//        .frame(width: screenSize.width*0.8)
         .padding([.bottom], 20)
     }
 }
@@ -103,6 +103,7 @@ struct ExerciseTableRow: View {
                 }
             } label: {
                 Image(systemName: "chevron.up")
+                    .foregroundColor(.indigo)
                     .rotationEffect(.degrees(self.up ? 0.0 : 180.0))
             }.frame(maxWidth: .infinity, alignment: .center)
             
@@ -116,10 +117,7 @@ struct ExerciseTableRow: View {
         
         // Divider
         RoundedRectangle(cornerRadius: 25)
-            .fill(Color.gray)
-            .frame(width: screenSize.width * 0.85, height: 1,  alignment: .center)
-            .padding([.bottom,], 20)
-            
+            .divider(width: screenSize.width)
     }
 }
 

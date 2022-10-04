@@ -19,14 +19,7 @@ struct MainView: View {
                 .tabItem {Text("Start")}
             ProgramView()
                 .tabItem {Text("Program")}
-        }
+        }.accentColor(.indigo)
 
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainView()
-            .previewDevice(/*@START_MENU_TOKEN@*/"iPhone 11"/*@END_MENU_TOKEN@*/)
     }
 }

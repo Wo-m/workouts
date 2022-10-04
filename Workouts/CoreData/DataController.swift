@@ -32,6 +32,14 @@ class DataController: ObservableObject {
     }
     
     /*
+     Call MOC delete using controller
+     */
+    func delete(object: NSManagedObject) {
+        try? moc.delete(object)
+        save()
+    }
+    
+    /*
      Save a session using id, name, and session exercises
      */
     func saveSession(_ id: UUID, _ name: String, _ exercises: [SessionExercise]) {

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2192458228E924D3000E0F29 /* StartVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2192458128E924D3000E0F29 /* StartVM.swift */; };
+		2192458528EC1355000E0F29 /* styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2192458428EC1355000E0F29 /* styles.swift */; };
 		21A7B50D28E6F1E800C5FB98 /* WorkoutsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A7B50C28E6F1E800C5FB98 /* WorkoutsApp.swift */; };
 		21A7B50F28E6F1E800C5FB98 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A7B50E28E6F1E800C5FB98 /* MainView.swift */; };
 		21A7B51128E6F1EA00C5FB98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21A7B51028E6F1EA00C5FB98 /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		2192458128E924D3000E0F29 /* StartVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartVM.swift; sourceTree = "<group>"; };
+		2192458428EC1355000E0F29 /* styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = styles.swift; sourceTree = "<group>"; };
 		21A7B50928E6F1E800C5FB98 /* Workouts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Workouts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21A7B50C28E6F1E800C5FB98 /* WorkoutsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsApp.swift; sourceTree = "<group>"; };
 		21A7B50E28E6F1E800C5FB98 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -76,6 +78,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2192458328EC1333000E0F29 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				2192458428EC1355000E0F29 /* styles.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
 		21A7B50028E6F1E800C5FB98 = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +107,7 @@
 		21A7B50B28E6F1E800C5FB98 /* Workouts */ = {
 			isa = PBXGroup;
 			children = (
+				2192458328EC1333000E0F29 /* Styles */,
 				21A7B55128E8EA5500C5FB98 /* Models */,
 				21A7B54C28E8D94A00C5FB98 /* ViewModel */,
 				21A7B52F28E7AB0000C5FB98 /* utils */,
@@ -280,6 +291,7 @@
 				21A7B52128E78F1500C5FB98 /* StartView.swift in Sources */,
 				21A7B54A28E8D6C900C5FB98 /* CreateViewVM.swift in Sources */,
 				21A7B51D28E78ECC00C5FB98 /* CreateView.swift in Sources */,
+				2192458528EC1355000E0F29 /* styles.swift in Sources */,
 				21A7B54628E83E0800C5FB98 /* NewExerciseView.swift in Sources */,
 				21A7B53128E7AB4B00C5FB98 /* DataController.swift in Sources */,
 				21A7B50D28E6F1E800C5FB98 /* WorkoutsApp.swift in Sources */,

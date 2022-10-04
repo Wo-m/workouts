@@ -11,6 +11,7 @@ import SwiftUI
 /// Now VM class for this, its very smiple and uses logic from its parents view model: CreateVM
 struct NewExerciseView: View {
     @StateObject var viewModel: CreateViewVM
+    @Environment(\.colorScheme) var cs
     
     @State var name: String = ""
     @State var reps: String = ""
@@ -37,15 +38,15 @@ struct NewExerciseView: View {
                 Button("Save") {
                     viewModel.saveExercise(name, sets, reps, weight, timer)
                     viewModel.updateExerciseDisplayInfo()
-                }
+                }.save()
                 Spacer()
                 Button("Cancel") {
                     viewModel.setIsAddingExercise(bool: false)
-                }
+                }.cancel()
                 Spacer()
             }
         
-        }.background(Color.white)
+        }.background(cs == .dark ? Color.black : Color.white)
         
     }
     

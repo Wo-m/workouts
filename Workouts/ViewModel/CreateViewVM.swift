@@ -29,9 +29,10 @@ class CreateViewVM: ObservableObject {
     }
     
     func saveSession() {
-        dataController.saveSession(UUID(), sessionName, exercises)
+        if !sessionName.isEmpty {
+            dataController.saveSession(UUID(), sessionName, exercises)
+        } // TODO: Make it clear session name is empty
     }
-    
     func saveExercise(_ name: String, _ sets: String, _ reps: String, _ weight: String, _ timer: String) {
         let exercise = dataController.createSessionExerciseWithChildren(sets: sets, reps: reps,
                                                                         weight: weight, timer: timer, name: name, index: index)
