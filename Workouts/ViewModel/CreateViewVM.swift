@@ -72,8 +72,8 @@ class CreateViewVM: ObservableObject {
     }
     
     func updateRepSet(repset: Repset,  weight: String) {
-        if weight.isInt16 {
-            repset.weight = weight.int16
+        if weight.isFloat {
+            repset.weight = weight.float
         }
     }
     

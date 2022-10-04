@@ -35,7 +35,7 @@ class DataController: ObservableObject {
      Call MOC delete using controller
      */
     func delete(object: NSManagedObject) {
-        try? moc.delete(object)
+        moc.delete(object)
         save()
     }
     
@@ -95,7 +95,7 @@ class DataController: ObservableObject {
             let repset = Repset(context: moc)
             repset.set = i
             repset.rep = Int16(reps)!
-            repset.weight = Int16(weight)!
+            repset.weight = Float(weight)!
             repset.id = UUID()
             
             repsets.append(repset)

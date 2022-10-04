@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21279" systemVersion="21G115" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="ExerciseInstance" representedClassName="ExerciseInstance" syncable="YES" codeGenerationType="class">
         <attribute name="isLatest" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="timer" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
@@ -23,7 +23,7 @@
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="rep" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="set" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="weight" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="weight" optional="YES" attributeType="Float" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <entity name="Session" representedClassName="Session" syncable="YES" codeGenerationType="class">
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
@@ -35,12 +35,4 @@
         <relationship name="instances" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ExerciseInstance"/>
         <relationship name="referenceExercise" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ReferenceExercise"/>
     </entity>
-    <elements>
-        <element name="ExerciseInstance" positionX="28.64453125" positionY="-255.54296875" width="156.9453125" height="88"/>
-        <element name="Program" positionX="-31.92578125" positionY="-868.6015625" width="128" height="74"/>
-        <element name="ReferenceExercise" positionX="361.01171875" positionY="-439.9765625" width="97.12109375" height="58"/>
-        <element name="Repset" positionX="468.81640625" positionY="-212.8203125" width="128" height="118"/>
-        <element name="Session" positionX="-45.3046875" positionY="-676.76171875" width="128" height="88"/>
-        <element name="SessionExercise" positionX="253.5" positionY="-582.59765625" width="128" height="88"/>
-    </elements>
 </model>
